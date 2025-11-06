@@ -96,7 +96,7 @@ struct CuisineSelectionView: View {
             VStack(spacing: 8) {
                 Text("What sounds good?")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.blue)
                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                     .multilineTextAlignment(.center)
 

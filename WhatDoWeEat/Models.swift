@@ -100,4 +100,20 @@ struct FoodDecision: Identifiable {
             return "Great choice! Look for \(cuisine.rawValue) places that offer \(serviceType.rawValue.lowercased())."
         }
     }
+
+    var mapsSearchQuery: String {
+        // Generate optimized search query for Maps
+        let serviceModifier: String
+        switch serviceType {
+        case .fastFood:
+            serviceModifier = "fast food"
+        case .dineIn:
+            serviceModifier = "restaurants"
+        case .takeOut:
+            serviceModifier = "takeout"
+        case .delivery:
+            serviceModifier = "delivery"
+        }
+        return "\(cuisine.rawValue) \(serviceModifier) near me"
+    }
 }

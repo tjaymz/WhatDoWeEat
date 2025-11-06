@@ -176,6 +176,7 @@ struct ServiceTypeSelectionView: View {
 // MARK: - Result View
 struct ResultView: View {
     let viewModel: DecisionViewModel
+    @State private var showMapsOptions = false
 
     var body: some View {
         VStack(spacing: 30) {
@@ -217,6 +218,24 @@ struct ResultView: View {
 
             // Action buttons
             VStack(spacing: 16) {
+                // Find Places button
+                Button {
+                    showMapsOptions = true
+                } label: {
+                    HStack {
+                        Image(systemName: "map.fill")
+                        Text("Find Places Near Me")
+                    }
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(Color(red: 0.2, green: 0.6, blue: 0.4))
+                    .cornerRadius(18)
+                    .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+                }
+
+                // Start Over button
                 Button {
                     viewModel.reset()
                 } label: {
@@ -224,17 +243,34 @@ struct ResultView: View {
                         Image(systemName: "arrow.clockwise")
                         Text("Start Over")
                     }
-                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .font(.system(size: 18, weight: .medium, design: .rounded))
                     .foregroundStyle(Color(red: 0.3, green: 0.7, blue: 0.5))
                     .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(.white)
+                    .frame(height: 50)
+                    .background(.white.opacity(0.9))
                     .cornerRadius(18)
-                    .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+                    .shadow(color: .black.opacity(0.15), radius: 8, x: 0, y: 4)
                 }
             }
             .padding(.horizontal, 40)
             .padding(.bottom, 40)
+        }
+        .confirmationDialog("Choose Maps App", isPresented: $showMapsOptions, titleVisibility: .visible) {
+            Button("Apple Maps") {
+                if let decision = viewModel.finalDecision {
+                    MapsHelper.openAppleMaps(with: decision.mapsSearchQuery)
+                }
+            }
+
+            Button("Google Maps") {
+                if let decision = viewModel.finalDecision {
+                    MapsHelper.openGoogleMaps(with: decision.mapsSearchQuery)
+                }
+            }
+
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Select which app to use for finding nearby places")
         }
         .transition(.asymmetric(
             insertion: .move(edge: .trailing).combined(with: .opacity),

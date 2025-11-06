@@ -16,8 +16,8 @@ struct ContentView: View {
                 // Gradient background
                 LinearGradient(
                     colors: [
-                        Color(red: 1.0, green: 0.8, blue: 0.4),
-                        Color(red: 1.0, green: 0.6, blue: 0.3)
+                        Color(red: 0.95, green: 0.5, blue: 0.2),
+                        Color(red: 0.9, green: 0.3, blue: 0.15)
                     ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
@@ -43,11 +43,13 @@ struct ContentView: View {
                         Text("What Do We Eat?")
                             .font(.system(size: 42, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                             .multilineTextAlignment(.center)
 
                         Text("Let's help you decide!")
                             .font(.system(size: 20, weight: .medium, design: .rounded))
-                            .foregroundStyle(.white.opacity(0.9))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                     }
 
                     Spacer()
@@ -62,7 +64,7 @@ struct ContentView: View {
                             Image(systemName: "arrow.right.circle.fill")
                                 .font(.system(size: 22))
                         }
-                        .foregroundStyle(Color(red: 1.0, green: 0.6, blue: 0.3))
+                        .foregroundStyle(Color(red: 0.9, green: 0.3, blue: 0.15))
                         .frame(maxWidth: .infinity)
                         .frame(height: 60)
                         .background(.white)

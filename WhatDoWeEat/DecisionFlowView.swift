@@ -34,6 +34,7 @@ struct DecisionFlowView: View {
                             }
                             .font(.system(size: 17, weight: .medium))
                             .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
                         }
                     }
 
@@ -45,6 +46,7 @@ struct DecisionFlowView: View {
                         Image(systemName: "arrow.clockwise")
                             .font(.system(size: 17, weight: .medium))
                             .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
                     }
                 }
                 .padding()
@@ -67,18 +69,18 @@ struct DecisionFlowView: View {
         switch viewModel.currentStep {
         case .cuisine:
             return [
-                Color(red: 1.0, green: 0.8, blue: 0.4),
-                Color(red: 1.0, green: 0.6, blue: 0.3)
+                Color(red: 0.95, green: 0.5, blue: 0.2),
+                Color(red: 0.9, green: 0.3, blue: 0.15)
             ]
         case .serviceType:
             return [
-                Color(red: 0.4, green: 0.8, blue: 1.0),
-                Color(red: 0.3, green: 0.6, blue: 1.0)
+                Color(red: 0.2, green: 0.5, blue: 0.85),
+                Color(red: 0.15, green: 0.35, blue: 0.75)
             ]
         case .result:
             return [
-                Color(red: 0.5, green: 0.9, blue: 0.5),
-                Color(red: 0.3, green: 0.7, blue: 0.5)
+                Color(red: 0.2, green: 0.7, blue: 0.4),
+                Color(red: 0.15, green: 0.5, blue: 0.3)
             ]
         }
     }
@@ -95,11 +97,13 @@ struct CuisineSelectionView: View {
                 Text("What sounds good?")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                     .multilineTextAlignment(.center)
 
                 Text("Pick a cuisine type")
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.9))
+                    .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
             }
             .padding(.top, 20)
 
@@ -139,16 +143,19 @@ struct ServiceTypeSelectionView: View {
                     Text("\(cuisine.emoji) \(cuisine.rawValue)")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                         .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                 }
 
                 Text("How do you want it?")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                     .multilineTextAlignment(.center)
 
                 Text("Choose your dining style")
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .foregroundStyle(.white.opacity(0.9))
+                    .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
             }
             .padding(.top, 20)
 
@@ -198,16 +205,19 @@ struct ResultView: View {
                 Text("Perfect Choice!")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
 
                 if let decision = viewModel.finalDecision {
                     Text("\(decision.cuisine.emoji) \(decision.description)")
                         .font(.system(size: 24, weight: .semibold, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.95))
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                         .multilineTextAlignment(.center)
 
                     Text(decision.suggestionText)
                         .font(.system(size: 18, weight: .medium, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.9))
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 40)
                         .padding(.top, 8)
@@ -230,7 +240,7 @@ struct ResultView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
-                    .background(Color(red: 0.2, green: 0.6, blue: 0.4))
+                    .background(Color(red: 0.1, green: 0.4, blue: 0.25))
                     .cornerRadius(18)
                     .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
                 }
@@ -244,10 +254,10 @@ struct ResultView: View {
                         Text("Start Over")
                     }
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .foregroundStyle(Color(red: 0.3, green: 0.7, blue: 0.5))
+                    .foregroundStyle(Color(red: 0.15, green: 0.5, blue: 0.3))
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(.white.opacity(0.9))
+                    .background(.white)
                     .cornerRadius(18)
                     .shadow(color: .black.opacity(0.15), radius: 8, x: 0, y: 4)
                 }

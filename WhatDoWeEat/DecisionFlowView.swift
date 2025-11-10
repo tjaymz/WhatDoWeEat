@@ -306,7 +306,7 @@ struct CuisineOptionCard: View {
 
                 Text(cuisine.rawValue)
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.black)
             }
             .frame(maxWidth: .infinity)
             .frame(height: 140)
@@ -341,7 +341,7 @@ struct ServiceTypeOptionCard: View {
 
                 Text(serviceType.rawValue)
                     .font(.system(size: 22, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.black)
 
                 Spacer()
 

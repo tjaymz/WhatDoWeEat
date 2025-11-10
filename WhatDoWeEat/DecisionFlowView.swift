@@ -45,7 +45,7 @@ struct DecisionFlowView: View {
                     } label: {
                         Image(systemName: "arrow.clockwise")
                             .font(.system(size: 17, weight: .medium))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.blue)
                             .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
                     }
                 }
@@ -96,7 +96,7 @@ struct CuisineSelectionView: View {
             VStack(spacing: 8) {
                 Text("What sounds good?")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.white)
                     .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 2)
                     .multilineTextAlignment(.center)
 
